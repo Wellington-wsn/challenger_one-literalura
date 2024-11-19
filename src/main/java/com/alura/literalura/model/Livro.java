@@ -3,14 +3,18 @@ package com.alura.literalura.model;
 public class Livro {
     private String titulo;
     private String autor;
-    private String idioma;
+    private Idioma idioma;
     private Integer NumerosDeDownloads;
 
-    public Livro(String titulo, String autor, String idioma, Integer numerosDeDownloads) {
-        this.titulo = titulo;
-        this.autor = autor;
-        this.idioma = idioma;
-        this.NumerosDeDownloads = numerosDeDownloads;
+
+
+    public Livro() {    }
+
+    public Livro(DadosLivro dadosLivro) {
+        this.titulo = dadosLivro.titulo();
+        this.autor = dadosLivro.autor();
+        this.idioma = Idioma.fromString(dadosLivro.idioma().split(",")[0].trim());
+        this.NumerosDeDownloads = dadosLivro.NumerosDeDownloads();
     }
 
     public String getTitulo() {
@@ -29,11 +33,11 @@ public class Livro {
         this.autor = autor;
     }
 
-    public String getIdioma() {
+    public Idioma getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(String idioma) {
+    public void setIdioma(Idioma idioma) {
         this.idioma = idioma;
     }
 
@@ -45,5 +49,12 @@ public class Livro {
         NumerosDeDownloads = numerosDeDownloads;
     }
 
-
+    @Override
+    public String toString() {
+        return
+                "titulo='" + titulo + '\'' +
+                ", autor='" + autor + '\'' +
+                ", idioma='" + idioma + '\'' +
+                ", NumerosDeDownloads=" + NumerosDeDownloads;
+    }
 }
