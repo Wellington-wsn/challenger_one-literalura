@@ -1,18 +1,27 @@
 package com.alura.literalura.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="livros")
 public class Livro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String titulo;
-    private String autor;
+
+    @Enumerated(EnumType.STRING)
     private Idioma idioma;
     private Integer NumerosDeDownloads;
 
-
+    @ManyToOne
+    private Autor autor;
 
     public Livro() {    }
 
     public Livro(DadosLivro dadosLivro) {
         this.titulo = dadosLivro.titulo();
-        this.autor = dadosLivro.autor();
         this.idioma = Idioma.fromString(dadosLivro.idioma().split(",")[0].trim());
         this.NumerosDeDownloads = dadosLivro.NumerosDeDownloads();
     }
@@ -23,14 +32,6 @@ public class Livro {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
     }
 
     public Idioma getIdioma() {
@@ -47,6 +48,22 @@ public class Livro {
 
     public void setNumerosDeDownloads(Integer numerosDeDownloads) {
         NumerosDeDownloads = numerosDeDownloads;
+    }
+
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
