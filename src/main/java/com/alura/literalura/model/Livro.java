@@ -1,5 +1,6 @@
 package com.alura.literalura.model;
 
+import com.alura.literalura.repository.AutorRepository;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,15 +16,16 @@ public class Livro {
     private Idioma idioma;
     private Integer NumerosDeDownloads;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.MERGE)
     private Autor autor;
 
     public Livro() {    }
 
     public Livro(DadosLivro dadosLivro) {
         this.titulo = dadosLivro.titulo();
-        this.idioma = Idioma.fromString(dadosLivro.idioma().split(",")[0].trim());
+        this.idioma = Idioma.fromString(dadosLivro.idiomas().get(0));
         this.NumerosDeDownloads = dadosLivro.NumerosDeDownloads();
+
     }
 
     public String getTitulo() {

@@ -25,10 +25,12 @@ public class Autor {
     public Autor(DadosAutor dataAutor) {
         this.nome = dataAutor.nome();
         this.anoNascimento = dataAutor.anoNascimento();
-
-        //
         this.anoFalecimento = dataAutor.anoFalecimento();
     }
+
+    public Autor(Autor dadosAutor) {
+    }
+
 
     public Long getId() {
         return id;

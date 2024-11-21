@@ -9,7 +9,7 @@ public class ConsumoJson implements IConsumoJson {
     private ObjectMapper mapper = new ObjectMapper();
 
     @Override
-    public <T> T cosumoJson(String json, Class<T> classe) {
+    public <T> T consumoJson(String json, Class<T> classe) {
         try {
             return mapper.readValue(json, classe);
         }catch (JsonProcessingException e) {
