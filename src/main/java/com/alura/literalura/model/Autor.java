@@ -53,6 +53,9 @@ public class Autor {
     }
 
     public void setAnoNascimento(int anoNascimento) {
+        if (anoNascimento <= 0) {
+            throw new IllegalArgumentException("O ano de nascimento deve ser um valor positivo.");
+        }
         this.anoNascimento = anoNascimento;
     }
 
@@ -61,6 +64,9 @@ public class Autor {
     }
 
     public void setAnoFalecimento(Integer anoFalecimento) {
+        if (anoFalecimento != null && anoFalecimento <= this.anoNascimento) {
+            throw new IllegalArgumentException("O ano de falecimento deve ser maior que o ano de nascimento.");
+        }
         this.anoFalecimento = anoFalecimento;
     }
 
@@ -77,9 +83,11 @@ public class Autor {
     @Override
     public String toString() {
         return
-                "nome='" + nome + '\'' +
-                ", anoNascimento: '" + anoNascimento + '\'' +
-                ", anoFalecimento: '" + anoFalecimento + '\'' +
-                        ", livros: '" + livros;
+                "***** AUTOR *****\n" +
+                " autor: " + nome + "\n" +
+                " anoNascimento: " + anoNascimento + "\n" +
+                " anoFalecimento: " + anoFalecimento+ "\n" +
+                "***************** \n\n";
+
     }
 }

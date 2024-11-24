@@ -2,50 +2,50 @@ package com.alura.literalura.model;
 
 
 public enum Idioma {
-    AFRICANER("africâner", "af"),
-    ALBANESE("albanês", "sq"),
-    ARABE("árabe", "ar"),
-    ARMENIO("armênio", "hy"),
-    BASCO("basco", "eu"),
-    BIELORUSSO("bielorrusso", "be"),
-    BULGARO("búlgaro", "bg"),
-    CATALAO("catalão", "ca"),
-    CHINES("chinês", "zh"),
-    CROATA("croata", "hr"),
-    TCHECO("tcheco", "cs"),
-    DINAMARQUES("dinamarquês", "da"),
-    HOLANDES("holandês", "nl"),
-    INGLES("inglês", "en"),
-    ESTONIANO("estoniano", "et"),
-    FINLANDES("finlandês", "fi"),
-    FRANCES("francês", "fr"),
-    ALEMAO("alemão", "de"),
-    GREGO("grego", "el"),
-    HEBRAICO("hebraico", "he"),
-    HINDI("hindi", "hi"),
-    HUNGARO("húngaro", "hu"),
-    ISLANDES("islandês", "is"),
-    INDONESIO("indonésio", "id"),
-    ITALIANO("italiano", "it"),
-    JAPONES("japonês", "ja"),
-    COREANO("coreano", "ko"),
-    LETAO("letão", "lv"),
-    LITUANO("lituano", "lt"),
-    MACEDONIO("macedônio", "mk"),
-    NORUEGUES("norueguês", "no"),
-    POLONES("polonês", "pl"),
-    PORTUGUES("português", "pt"),
-    ROMENO("romeno", "ro"),
-    RUSSO("russo", "ru"),
-    SERVIO("sérvio", "sr"),
-    ESLOVACO("eslovaco", "sk"),
-    ESLOVENO("esloveno", "sl"),
-    ESPANHOL("espanhol", "es"),
-    SUECO("sueco", "sv"),
-    TAILANDES("tailandês", "th"),
-    TURCO("turco", "tr"),
-    UCRANIANO("ucraniano", "uk"),
-    VIETNAMITA("vietnamita", "vi");
+    AFRICANER("AFRICANER", "af"),
+    ALBANESE("ALBANESE", "sq"),
+    ARABE("ARABE", "ar"),
+    ARMENIO("ARMENIO", "hy"),
+    BASCO("BASCO", "eu"),
+    BIELORUSSO("BIELORUSSO", "be"),
+    BULGARO("BULGARO", "bg"),
+    CATALAO("CATALAO", "ca"),
+    CHINES("CHINES", "zh"),
+    CROATA("CROATA", "hr"),
+    TCHECO("TCHECO", "cs"),
+    DINAMARQUES("DINAMARQUES", "da"),
+    HOLANDES("HOLANDES", "nl"),
+    INGLES("INGLES", "en"),
+    ESTONIANO("ESTONIANO", "et"),
+    FINLANDES("FINLANDES", "fi"),
+    FRANCES("FRANCES", "fr"),
+    ALEMAO("ALEMAO", "de"),
+    GREGO("GREGO", "el"),
+    HEBRAICO("HEBRAICO", "he"),
+    HINDI("HINDI", "hi"),
+    HUNGARO("HUNGARO", "hu"),
+    ISLANDES("ISLANDES", "is"),
+    INDONESIO("INDONESIO", "id"),
+    ITALIANO("ITALIANO", "it"),
+    JAPONES("JAPONES", "ja"),
+    COREANO("COREANO", "ko"),
+    LETAO("LETAO", "lv"),
+    LITUANO("LITUANO", "lt"),
+    MACEDONIO("MACEDONIO", "mk"),
+    NORUEGUES("NORUEGUES", "no"),
+    POLONES("POLONES", "pl"),
+    PORTUGUES("PORTUGUES", "pt"),
+    ROMENO("ROMENO", "ro"),
+    RUSSO("RUSSO", "ru"),
+    SERVIO("SERVIO", "sr"),
+    ESLOVACO("ESLOVACO", "sk"),
+    ESLOVENO("ESLOVENO", "sl"),
+    ESPANHOL("ESPANHOL", "es"),
+    SUECO("SUECO", "sv"),
+    TAILANDES("TAILANDES", "th"),
+    TURCO("TURCO", "tr"),
+    UCRANIANO("UCRANIANO", "uk"),
+    VIETNAMITA("VIETNAMITA", "vi");
 
     private String idiomaApi;
     private String codigoApi;
@@ -55,12 +55,21 @@ public enum Idioma {
         this.codigoApi = codigo;
     }
 
-    public static Idioma fromString(String texto) {
+    public static Idioma fromCodigo(String codigo) {
         for (Idioma linguagem : Idioma.values()) {
-            if (linguagem.codigoApi.equalsIgnoreCase(texto)) {
+            if (linguagem.codigoApi.equalsIgnoreCase(codigo)) {
                 return linguagem;
             }
         }
-        throw new IllegalArgumentException("Nenhum idioma encontrado com o texto digitado: " + texto);
+        throw new IllegalArgumentException("Nenhum idioma encontrado com o codigo digitado: " + codigo);
+    }
+
+    public static Idioma fromNome(String nome) {
+        for (Idioma idioma : Idioma.values()) {
+            if (idioma.idiomaApi.equalsIgnoreCase(nome)) {
+                return idioma;
+            }
+        }
+        throw new IllegalArgumentException("Linguagem não encontrado: " + nome);
     }
 }

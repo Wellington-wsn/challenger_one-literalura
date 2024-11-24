@@ -1,6 +1,5 @@
 package com.alura.literalura.model;
 
-import com.alura.literalura.repository.AutorRepository;
 import jakarta.persistence.*;
 
 @Entity
@@ -23,9 +22,8 @@ public class Livro {
 
     public Livro(DadosLivro dadosLivro) {
         this.titulo = dadosLivro.titulo();
-        this.idioma = Idioma.fromString(dadosLivro.idiomas().get(0));
+        this.idioma = Idioma.fromCodigo(dadosLivro.idiomas().get(0));
         this.NumerosDeDownloads = dadosLivro.NumerosDeDownloads();
-
     }
 
     public String getTitulo() {
@@ -71,9 +69,11 @@ public class Livro {
     @Override
     public String toString() {
         return
-                "titulo='" + titulo + '\'' +
-                ", autor='" + autor + '\'' +
-                ", idioma='" + idioma + '\'' +
-                ", NumerosDeDownloads=" + NumerosDeDownloads;
+                "\n***** LIVRO *****\n" +
+                "Titulo: " + titulo + "\n" +
+                "Autor: " + autor.getNome() + "\n" +
+                "Idioma: " + idioma + "\n" +
+                "Numero de downloads: " + NumerosDeDownloads + "\n" +
+                "*****************\n";
     }
 }
