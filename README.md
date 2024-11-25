@@ -30,11 +30,11 @@ Este sistema permite a busca, armazenamento e gerenciamento de livros, utilizand
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Java** (versão mínima 11)
+- **Java** (versão mínima 17)
 - **Jakarta Persistence API (JPA)** para gerenciamento de entidades
 - **Spring Framework** para injeção de dependências e manipulação de repositórios
 - **API pública Gutendex** para busca de livros online
-- **Banco de dados relacional (H2 ou outro configurado)**
+- **Banco de dados relacional (PostgreSql)**
 
 ---
 
